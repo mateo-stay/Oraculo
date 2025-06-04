@@ -13,22 +13,30 @@ const respuestas = [
 
 function consultarOraculo() {
   const pregunta = document.getElementById("pregunta").value;
-  const respuesta = document.getElementById("respuesta");
+  const respuestaElem = document.getElementById("respuesta");
 
   if (pregunta.trim() === "") {
-    respuesta.textContent = "Escribe una pregunta primero.";
-    // Reinicia la animación
-    respuesta.classList.remove("fadeIn");
-    void respuesta.offsetWidth; // Forzar reflujo para reiniciar la animación
-    respuesta.classList.add("fadeIn");
+    respuestaElem.textContent = "Escribe una pregunta primero.";
+    respuestaElem.classList.remove("fadeIn");
+    void respuestaElem.offsetWidth;
+    respuestaElem.classList.add("fadeIn");
     return;
   }
 
   const indice = Math.floor(Math.random() * respuestas.length);
-  respuesta.textContent = respuestas[indice];
-  
-  // Reinicia la animación para cada respuesta
-  respuesta.classList.remove("fadeIn");
-  void respuesta.offsetWidth;
-  respuesta.classList.add("fadeIn");
+  const textoRespuesta = respuestas[indice];
+  respuestaElem.textContent = textoRespuesta;
+
+  // Aplicar animación
+  respuestaElem.classList.remove("fadeIn");
+  void respuestaElem.offsetWidth;
+  respuestaElem.classList.add("fadeIn");
+
+  // --- TEXT-TO-SPEECH ---
+  if ('speechSynthesis' in window) {
+    const msg = new SpeechSynthesisUtterance(textoRespuesta);
+    msg.lang = 'es-ES'; // Español de España / Latinoamérica
+    msg.rate = 1;       // Velocidad normal
+    window.speechSynthesis.speak(msg);
+  }
 }
