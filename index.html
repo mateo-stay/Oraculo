@@ -8,7 +8,9 @@
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616489.png" />
 </head>
 <body>
-  <!-- Contenedor central -->
+  <!-- ================================
+       Contenedor Central del Oráculo
+       ================================= -->
   <div class="container">
     <h1>🔮 Oráculo Místico</h1>
     <!-- Input y botón con IDs -->
@@ -45,19 +47,12 @@
       for (let i = 0; i < 80; i++) {
         const p = document.createElement('div');
         p.className = 'particle';
-
-        // Obtenemos coordenada fuera del contenedor
         const pos = getOutsidePosition();
         p.style.left = pos.x + 'px';
         p.style.top = pos.y + 'px';
-
-        // Animación más lenta: entre 12s y 20s
-        p.style.animationDuration = (12 + Math.random() * 8) + 's';
+        p.style.animationDuration = (12 + Math.random() * 8) + 's';    // 12s–20s
         p.style.animationDelay = (Math.random() * 10) + 's';
-
-        // Tamaño mayor: entre 8px y 18px
-        p.style.width = p.style.height = (Math.random() * 10 + 8) + 'px';
-
+        p.style.width = p.style.height = (Math.random() * 10 + 8) + 'px'; // 8px–18px
         document.body.appendChild(p);
       }
 
@@ -65,14 +60,10 @@
       for (let i = 0; i < 25; i++) {
         const f = document.createElement('div');
         f.className = 'light-flare';
-
         const pos = getOutsidePosition();
         f.style.left = pos.x + 'px';
         f.style.top = pos.y + 'px';
-
-        // Animación de destello con un retraso aleatorio
         f.style.animationDelay = (Math.random() * 8) + 's';
-
         document.body.appendChild(f);
       }
     });
@@ -84,4 +75,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
