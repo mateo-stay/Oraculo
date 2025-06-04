@@ -1,5 +1,3 @@
-// script.js
-
 const respuestas = [
   "Sí, absolutamente.",
   "No cuentes con ello.",
@@ -20,7 +18,7 @@ function consultarOraculo() {
   if (pregunta.trim() === "") {
     respuesta.textContent = "Escribe una pregunta primero.";
     respuesta.classList.remove("fadeIn");
-    void respuesta.offsetWidth; // Reinciar animación
+    void respuesta.offsetWidth;
     respuesta.classList.add("fadeIn");
     return;
   }
@@ -29,6 +27,6 @@ function consultarOraculo() {
   respuesta.textContent = respuestas[indice];
 
   respuesta.classList.remove("fadeIn");
-  void respuesta.offsetWidth; // Reinciar animación
+  void respuesta.offsetWidth;
   respuesta.classList.add("fadeIn");
 }
