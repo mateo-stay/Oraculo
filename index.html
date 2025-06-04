@@ -8,20 +8,25 @@
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616489.png" />
 </head>
 <body>
+  <!-- Contenedor central -->
   <div class="container">
     <h1>🔮 Oráculo Místico</h1>
+    <!-- Input y botón con IDs -->
     <input type="text" id="pregunta" placeholder="Haz tu pregunta..." />
-    <button onclick="consultarOraculo()">Consultar</button>
+    <button id="btn-consultar">Consultar</button>
     <p id="respuesta"></p>
   </div>
 
-  <!-- Partículas y destellos sin caer sobre el container -->
+  <!-- ================================
+       Generación de partículas y destellos
+       (evitando que nazcan sobre el .container)
+       ================================= -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const container = document.querySelector('.container');
       const rect = container.getBoundingClientRect();
 
-      // Función que retorna una posición aleatoria fuera del rectángulo
+      // Función que retorna una posición aleatoria fuera del rectángulo del container
       function getOutsidePosition() {
         let x, y;
         do {
@@ -36,34 +41,47 @@
         return { x, y };
       }
 
-      // Partículas (más grandes y lentas), todas fuera del container
+      // Partículas (más grandes y más lentas), todas fuera del container
       for (let i = 0; i < 80; i++) {
         const p = document.createElement('div');
         p.className = 'particle';
-        // Evitar generar dentro del container:
+
+        // Obtenemos coordenada fuera del contenedor
         const pos = getOutsidePosition();
         p.style.left = pos.x + 'px';
         p.style.top = pos.y + 'px';
+
+        // Animación más lenta: entre 12s y 20s
         p.style.animationDuration = (12 + Math.random() * 8) + 's';
         p.style.animationDelay = (Math.random() * 10) + 's';
+
+        // Tamaño mayor: entre 8px y 18px
         p.style.width = p.style.height = (Math.random() * 10 + 8) + 'px';
+
         document.body.appendChild(p);
       }
 
-      // Destellos de luz, todos fuera del container
+      // Destellos de luz (light-flares), todos fuera del container
       for (let i = 0; i < 25; i++) {
         const f = document.createElement('div');
         f.className = 'light-flare';
+
         const pos = getOutsidePosition();
         f.style.left = pos.x + 'px';
         f.style.top = pos.y + 'px';
-        f.style.animationDelay = Math.random() * 8 + 's';
+
+        // Animación de destello con un retraso aleatorio
+        f.style.animationDelay = (Math.random() * 8) + 's';
+
         document.body.appendChild(f);
       }
     });
   </script>
 
-  <!-- Lógica del oráculo -->
+  <!-- ================================
+       Lógica del Oráculo + Text-to-Speech
+       ================================= -->
   <script src="script.js"></script>
 </body>
 </html>
+
