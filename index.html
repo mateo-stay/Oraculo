@@ -15,26 +15,48 @@
     <p id="respuesta"></p>
   </div>
 
-  <!-- Generación de partículas y destellos de luz -->
+  <!-- Partículas y destellos sin caer sobre el container -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Partículas flotantes (más grandes y más lentas)
+      const container = document.querySelector('.container');
+      const rect = container.getBoundingClientRect();
+
+      // Función que retorna una posición aleatoria fuera del rectángulo
+      function getOutsidePosition() {
+        let x, y;
+        do {
+          x = Math.random() * window.innerWidth;
+          y = Math.random() * window.innerHeight;
+        } while (
+          x >= rect.left &&
+          x <= rect.right &&
+          y >= rect.top &&
+          y <= rect.bottom
+        );
+        return { x, y };
+      }
+
+      // Partículas (más grandes y lentas), todas fuera del container
       for (let i = 0; i < 80; i++) {
         const p = document.createElement('div');
         p.className = 'particle';
-        p.style.left = Math.random() * 100 + 'vw';
-        p.style.animationDuration = (12 + Math.random() * 8) + 's';    // 12s–20s
+        // Evitar generar dentro del container:
+        const pos = getOutsidePosition();
+        p.style.left = pos.x + 'px';
+        p.style.top = pos.y + 'px';
+        p.style.animationDuration = (12 + Math.random() * 8) + 's';
         p.style.animationDelay = (Math.random() * 10) + 's';
-        p.style.width = p.style.height = (Math.random() * 10 + 8) + 'px'; // 8px–18px
+        p.style.width = p.style.height = (Math.random() * 10 + 8) + 'px';
         document.body.appendChild(p);
       }
 
-      // Destellos de luz (light flares)
+      // Destellos de luz, todos fuera del container
       for (let i = 0; i < 25; i++) {
         const f = document.createElement('div');
         f.className = 'light-flare';
-        f.style.top = Math.random() * 100 + 'vh';
-        f.style.left = Math.random() * 100 + 'vw';
+        const pos = getOutsidePosition();
+        f.style.left = pos.x + 'px';
+        f.style.top = pos.y + 'px';
         f.style.animationDelay = Math.random() * 8 + 's';
         document.body.appendChild(f);
       }
