@@ -1,48 +1,46 @@
-/* Estilos base */
+/* Fondo animado con partículas */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  /* Fondo animado con un sutil gradiente que se mueve */
-  background: radial-gradient(circle, #1e1e2f, #000);
-  animation: gradientBG 15s ease infinite;
-  color: #fff;
-  text-align: center;
-  padding: 40px 20px;
   margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  background: radial-gradient(circle, #1e1e2f, #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-@keyframes gradientBG {
-  0% { background: radial-gradient(circle, #1e1e2f, #000); }
-  50% { background: radial-gradient(circle, #3c3c5c, #1e1e2f); }
-  100% { background: radial-gradient(circle, #1e1e2f, #000); }
-}
-
+/* Contenedor centrado y animado */
 .container {
+  z-index: 2;
   background-color: rgba(255, 255, 255, 0.08);
   padding: 30px 20px;
   border-radius: 20px;
+  width: 90%;
   max-width: 500px;
-  margin: auto;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.2);
-  /* Una pequeña animación al cargar la caja */
-  animation: slideIn 1s ease-out;
+  text-align: center;
+  animation: fadeInContainer 1s ease-out;
 }
 
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fadeInContainer {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 h1 {
   font-size: 2rem;
+  color: white;
   margin-bottom: 20px;
 }
 
 input {
   padding: 12px;
   width: 90%;
-  max-width: 100%;
   border: none;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -57,49 +55,60 @@ button {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
-/* Efecto hover y pulsado para el botón */
 button:hover {
   background-color: #7d6eff;
 }
+
 button:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
-/* Estilo para la respuesta con animación fadeIn */
 #respuesta {
   margin-top: 20px;
   font-size: 1.2rem;
   min-height: 40px;
-}
-
-/* Animación fadeIn: se aplicará mediante JS cada vez que se muestre una respuesta */
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-.fadeIn {
+  color: #ffffff;
   animation: fadeIn 0.8s ease-out;
 }
 
-/* Responsive para pantallas pequeñas */
-@media screen and (max-width: 600px) {
-  .container {
-    padding: 20px 15px;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
+/* Partículas flotantes */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  animation: float 10s linear infinite;
+  opacity: 0.2;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-10vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
   h1 {
     font-size: 1.5rem;
   }
 
   input {
-    font-size: 0.95rem;
-  }
-
-  button {
-    width: 100%;
+    font-size: 1rem;
   }
 
   #respuesta {
