@@ -15,17 +15,28 @@
     <p id="respuesta"></p>
   </div>
 
-  <!-- Partículas animadas -->
+  <!-- Generación de partículas y destellos de luz -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      for (let i = 0; i < 60; i++) {
+      // Partículas flotantes (más grandes y más lentas)
+      for (let i = 0; i < 80; i++) {
         const p = document.createElement('div');
         p.className = 'particle';
         p.style.left = Math.random() * 100 + 'vw';
-        p.style.animationDuration = (6 + Math.random() * 10) + 's';
+        p.style.animationDuration = (12 + Math.random() * 8) + 's';    // 12s–20s
         p.style.animationDelay = (Math.random() * 10) + 's';
-        p.style.width = p.style.height = (Math.random() * 3 + 2) + 'px';
+        p.style.width = p.style.height = (Math.random() * 10 + 8) + 'px'; // 8px–18px
         document.body.appendChild(p);
+      }
+
+      // Destellos de luz (light flares)
+      for (let i = 0; i < 25; i++) {
+        const f = document.createElement('div');
+        f.className = 'light-flare';
+        f.style.top = Math.random() * 100 + 'vh';
+        f.style.left = Math.random() * 100 + 'vw';
+        f.style.animationDelay = Math.random() * 8 + 's';
+        document.body.appendChild(f);
       }
     });
   </script>

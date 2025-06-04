@@ -1,4 +1,7 @@
-/* Fondo animado con partículas */
+/* =============================
+   Estilos generales
+   ============================= */
+
 body {
   margin: 0;
   padding: 0;
@@ -12,7 +15,7 @@ body {
   position: relative;
 }
 
-/* Contenedor centrado y animado */
+/* Contenedor central */
 .container {
   z-index: 2;
   background-color: rgba(255, 255, 255, 0.08);
@@ -79,15 +82,15 @@ button:active {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Partículas flotantes */
+/* =============================
+   Partículas flotantes
+   ============================= */
 .particle {
   position: absolute;
-  width: 4px;
-  height: 4px;
   background: white;
   border-radius: 50%;
-  animation: float 10s linear infinite;
   opacity: 0.2;
+  animation: float 12s linear infinite;
 }
 
 @keyframes float {
@@ -101,7 +104,41 @@ button:active {
   }
 }
 
-/* Responsive */
+/* =============================
+   Destellos de luz ("light flares")
+   ============================= */
+.light-flare {
+  position: absolute;
+  width: 20px;   /* Tamaño base del destello */
+  height: 20px;  /* Tamaño base del destello */
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: flareAnimate 3s ease-in-out infinite;
+}
+
+@keyframes flareAnimate {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  10% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* =============================
+   Responsive para móviles
+   ============================= */
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 1.5rem;
