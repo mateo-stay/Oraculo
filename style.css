@@ -1,6 +1,4 @@
-/* =============================
-   Estilos generales
-   ============================= */
+/* style.css */
 
 body {
   margin: 0;
@@ -15,10 +13,10 @@ body {
   position: relative;
 }
 
-/* Contenedor central (z-index alto) */
+/* Contenedor central */
 .container {
   position: relative;
-  z-index: 10; /* Asegura que esté por encima de partículas/destellos */
+  z-index: 10;
   background-color: rgba(255, 255, 255, 0.08);
   padding: 30px 20px;
   border-radius: 20px;
@@ -42,7 +40,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Input de texto */
 input {
   padding: 12px;
   width: 90%;
@@ -52,7 +49,6 @@ input {
   font-size: 1rem;
 }
 
-/* Botón */
 button {
   padding: 12px 25px;
   background-color: #6a5acd;
@@ -63,35 +59,29 @@ button {
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
+
 button:hover {
   background-color: #7d6eff;
 }
+
 button:active {
   transform: scale(0.97);
 }
 
-/* Respuesta */
 #respuesta {
   margin-top: 20px;
   font-size: 1.2rem;
   min-height: 40px;
   color: #ffffff;
-  /* La clase .fadeIn se añade dinámicamente en JS */
+  animation: fadeIn 0.8s ease-out;
 }
 
-/* Animación fadeIn para la respuesta */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.fadeIn {
-  animation: fadeIn 0.8s ease-out;
-}
 
-/* =============================
-   Partículas flotantes (z-index menor)
-   ============================= */
-
+/* Partículas flotantes */
 .particle {
   position: absolute;
   background: white;
@@ -102,14 +92,17 @@ button:active {
 }
 
 @keyframes float {
-  0%   { transform: translateY(100vh) scale(1); opacity: 0.3; }
-  100% { transform: translateY(-10vh) scale(0.5); opacity: 0; }
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-10vh) scale(0.5);
+    opacity: 0;
+  }
 }
 
-/* =============================
-   Destellos de luz (z-index menor)
-   ============================= */
-
+/* Destellos de luz ("light flares") */
 .light-flare {
   position: absolute;
   width: 20px;
@@ -122,16 +115,25 @@ button:active {
 }
 
 @keyframes flareAnimate {
-  0%   { transform: scale(0.2); opacity: 0; }
-  10%  { transform: scale(1.2); opacity: 0.6; }
-  50%  { transform: scale(1.6); opacity: 0.3; }
-  100% { transform: scale(0);   opacity: 0; }
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  10% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
 }
 
-/* =============================
-   Responsive para móviles
-   ============================= */
-
+/* Responsive para móviles */
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 1.5rem;
