@@ -7,7 +7,7 @@ const respuestas = [
   "Consulta de nuevo más tarde.",
   "Parece prometedor.",
   "No tengo suficiente información.",
-  "Claro que sí, campeón.",
+  "Claro que sí.",
   "Jajaja, ¿en serio preguntaste eso?"
 ];
 
@@ -17,9 +17,18 @@ function consultarOraculo() {
 
   if (pregunta.trim() === "") {
     respuesta.textContent = "Escribe una pregunta primero.";
+    // Reinicia la animación
+    respuesta.classList.remove("fadeIn");
+    void respuesta.offsetWidth; // Forzar reflujo para reiniciar la animación
+    respuesta.classList.add("fadeIn");
     return;
   }
 
   const indice = Math.floor(Math.random() * respuestas.length);
   respuesta.textContent = respuestas[indice];
+  
+  // Reinicia la animación para cada respuesta
+  respuesta.classList.remove("fadeIn");
+  void respuesta.offsetWidth;
+  respuesta.classList.add("fadeIn");
 }
