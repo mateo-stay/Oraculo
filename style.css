@@ -1,32 +1,77 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #1e1e2f, #3c3c5c);
+  background: radial-gradient(circle, #1e1e2f, #000);
   color: #fff;
   text-align: center;
-  padding: 50px;
+  padding: 40px 20px;
+  margin: 0;
 }
 
 .container {
-  background-color: rgba(255,255,255,0.1);
-  padding: 30px;
-  border-radius: 10px;
-  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 30px 20px;
+  border-radius: 20px;
+  max-width: 500px;
   margin: auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 input {
-  padding: 10px;
-  width: 80%;
+  padding: 12px;
+  width: 90%;
+  max-width: 100%;
   border: none;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 1rem;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 12px 25px;
   background-color: #6a5acd;
   color: white;
+  font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #7d6eff;
+}
+
+#respuesta {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  min-height: 40px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  input {
+    font-size: 0.95rem;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  #respuesta {
+    font-size: 1rem;
+  }
 }
